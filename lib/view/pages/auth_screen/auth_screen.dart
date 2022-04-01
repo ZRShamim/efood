@@ -1,14 +1,17 @@
-import 'package:efood/view/pages/app_screen/home_page.dart';
 import 'package:efood/view/pages/app_screen/landing_page.dart';
 import 'package:efood/view/styles/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
+import 'widgets/login_social_button.dart';
 
 class AuthScreen extends StatelessWidget {
   AuthScreen({Key? key}) : super(key: key);
 
   var signIn = false.obs;
+
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +36,7 @@ class AuthScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
+              controller: phoneController,
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
               decoration: InputDecoration(
@@ -45,13 +49,18 @@ class AuthScreen extends StatelessWidget {
               height: 20,
             ),
             TextField(
+              controller: passwordController,
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.done,
               decoration: InputDecoration(
-                  label: const Text('Password'),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30)),
-                  prefixIcon: const Icon(Icons.lock_outlined)),
+                label: const Text('Password'),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    30,
+                  ),
+                ),
+                prefixIcon: const Icon(Icons.lock_outlined),
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -60,15 +69,13 @@ class AuthScreen extends StatelessWidget {
               onTap: () {
                 if (signIn.value) {
                   Get.off(() => LandingPage());
-                  
                 }
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 50,
                 decoration: BoxDecoration(
-                    color: mainColor,
-                    borderRadius: BorderRadius.circular(30)),
+                    color: mainColor, borderRadius: BorderRadius.circular(30)),
                 child: Center(
                   child: Obx(
                     () => Text(
@@ -144,34 +151,4 @@ class AuthScreen extends StatelessWidget {
   }
 }
 
-class LoginSocialButton extends StatelessWidget {
-  const LoginSocialButton({
-    Key? key,
-    required this.iconPath,
-  }) : super(key: key);
 
-  final String iconPath;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10),
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 2,
-            color: const Color.fromARGB(255, 219, 219, 219),
-          ),
-          shape: BoxShape.circle,
-        ),
-        child: SvgPicture.asset(
-          iconPath,
-          height: 20,
-          width: 20,
-        ),
-      ),
-    );
-  }
-}
