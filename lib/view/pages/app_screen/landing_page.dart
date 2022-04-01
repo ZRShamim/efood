@@ -25,8 +25,6 @@ class LandingPage extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
           elevation: 0,
           onTap: changeTabIndex,
           currentIndex: bottomTabbarIndex.value,
@@ -52,6 +50,7 @@ class LandingPage extends StatelessWidget {
                 Icons.widgets_outlined,
               ),
               label: 'Menu',
+              
             ),
           ],
         ),

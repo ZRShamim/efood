@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'efood',
       debugShowCheckedModeBanner: false,
       color: mainBG,
-      home: LandingPage(),
+      home: AuthScreen(),
     );
   }
 }

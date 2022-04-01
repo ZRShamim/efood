@@ -1,4 +1,5 @@
 import 'package:efood/view/pages/app_screen/home_page.dart';
+import 'package:efood/view/pages/app_screen/landing_page.dart';
 import 'package:efood/view/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -58,7 +59,7 @@ class AuthScreen extends StatelessWidget {
             InkWell(
               onTap: () {
                 if (signIn.value) {
-                  Get.off(() => const HomePage());
+                  Get.off(() => LandingPage());
                   
                 }
               },
